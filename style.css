@@ -441,8 +441,15 @@ section[id] {
 .hero-actions {
   animation:enter .8s .2s both
 }
+.reveal.is-pending {
+  opacity:0;
+  transform:translateY(14px);
+  transition:none;
+}
 .reveal.is-revealed {
-  animation:enter .75s both
+  opacity:1;
+  transform:translateY(0);
+  transition:opacity .75s ease, transform .75s ease;
 }
 @media(min-width:1500px) {
   .hero-content {
@@ -619,6 +626,10 @@ section[id] {
   }
 }
 @media(prefers-reduced-motion:reduce) {
+  .reveal.is-pending {
+    opacity:1;
+    transform:none;
+  }
   html {
     scroll-behavior:auto
   }

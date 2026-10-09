@@ -1,13 +1,33 @@
 const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const reveals = [...document.querySelectorAll('.reveal')];
+let revealObserver;
+const showReveal = element => {
+  element.classList.add('is-revealed');
+  element.classList.remove('is-pending');
+  revealObserver?.unobserve(element);
+};
 if ('IntersectionObserver' in window && !motion.matches) {
-  const observer = new IntersectionObserver(entries => {
+  revealObserver = new IntersectionObserver(entries => {
     for (const entry of entries) if (entry.isIntersecting) {
-      entry.target.classList.add('is-revealed');
-      observer.unobserve(entry.target);
+      showReveal(entry.target);
     }
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+  }, { threshold: 0, rootMargin: '0px 0px 80px 0px' });
+  for (const element of reveals) {
+    // Never hide content that the visitor can already see, including restored scroll positions.
+    if (element.getBoundingClientRect().top < window.innerHeight) {
+      showReveal(element);
+    } else {
+      element.classList.add('is-pending');
+      revealObserver.observe(element);
+    }
+  }
 }
+motion.addEventListener('change', event => {
+  if (event.matches) {
+    reveals.forEach(showReveal);
+    revealObserver?.disconnect();
+  }
+});
 document.querySelectorAll('.button').forEach(button => {
   button.addEventListener('pointerdown', () => button.classList.add('is-pressed'));
   for (const event of ['pointerup', 'pointerleave', 'pointercancel', 'blur']) button.addEventListener(event, () => button.classList.remove('is-pressed'));
