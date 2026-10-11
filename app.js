@@ -28,6 +28,20 @@ motion.addEventListener('change', event => {
     revealObserver?.disconnect();
   }
 });
+
+document.querySelectorAll('.mobile-menu').forEach(menu => {
+  const summary = menu.querySelector('summary');
+  menu.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menu.open) {
+      menu.open = false;
+      summary.focus();
+    }
+  });
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.open = false; }));
+  document.addEventListener('pointerdown', event => {
+    if (menu.open && !menu.contains(event.target)) menu.open = false;
+  });
+});
 document.querySelectorAll('.button').forEach(button => {
   button.addEventListener('pointerdown', () => button.classList.add('is-pressed'));
   for (const event of ['pointerup', 'pointerleave', 'pointercancel', 'blur']) button.addEventListener(event, () => button.classList.remove('is-pressed'));
