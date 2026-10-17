@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>小さな休憩室 | 風の灯火</title>
+  <meta name="description" content="夜風と温かな灯りの中で、少しだけひと休み。風の灯火の小さな体験作品。">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="./room.css?v=room-1">
+  <script src="./room.js?v=room-1" defer></script>
+</head>
+<body data-motion="off" data-ready="false">
+  <header class="room-header">
+    <a class="edge-control" href="../"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="../icons.svg#back"></use></svg><span>お店へ戻る</span></a>
+    <div class="room-name"><p>風の灯火</p><h1>小さな休憩室</h1></div>
+  </header>
+  <main class="room-stage" id="main">
+    <div class="room-composition">
+      <div class="room-scene" aria-label="夜の和室">
+        <img id="room-image" src="../images/rest-room.webp" width="1280" height="719" fetchpriority="high" alt="手前の木のテーブルにお茶と温かな灯り。奥の丸窓から月と山並みが見える、静かな夜の和室。">
+        <div class="room-effects" aria-hidden="true">
+          <div class="window-air"><i></i></div>
+          <i class="lantern-glow"></i>
+          <svg class="tea-steam" viewBox="0 0 100 150"><path d="M36 145 C12 115 58 102 36 72 S51 38 42 12"/><path d="M58 148 C82 124 40 99 62 78 S47 43 66 22"/><path d="M47 150 C64 128 28 105 48 91 S65 59 49 42"/></svg>
+          <i class="ember ember-one"></i><i class="ember ember-two"></i><i class="ember ember-three"></i>
+        </div>
+        <button class="hotspot tea-target" type="button" aria-label="お茶に触れて、湯気を眺める" disabled><span>お茶</span></button>
+        <button class="hotspot light-target" type="button" aria-label="灯りに触れて、光をふくらませる" disabled><span>灯り</span></button>
+      </div>
+      <p class="room-hint">お茶や灯りに、そっと触れてみてください。</p>
+      <p class="image-error" hidden>お部屋の画像を読み込めませんでした。<br>少し待ってから、もう一度お越しください。</p>
+      <noscript><p class="fallback-note">静かな景色を、そのままお楽しみください。反応と音にはJavaScriptが必要です。</p></noscript>
+    </div>
+  </main>
+  <footer class="room-footer">
+    <p class="room-caption">ただ、ここでひと息。</p>
+    <div class="room-controls">
+      <button class="edge-control" id="motion-toggle" type="button" aria-pressed="false" disabled><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="../icons.svg#wind"></use></svg><span>動きを止める</span></button>
+      <div class="sound-settings">
+        <button class="edge-control" id="sound-toggle" type="button" aria-expanded="false" aria-controls="sound-panel" disabled><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h4l5 4V6l-5 4H5ZM18 9q4 3 0 6"/></svg><span>音</span><span class="sound-state">無音</span></button>
+        <section class="sound-panel" id="sound-panel" aria-labelledby="sound-title" hidden>
+          <h2 id="sound-title">夜の音</h2>
+          <div role="group" aria-label="環境音を選ぶ" class="sound-choices">
+            <button type="button" data-sound="silent" aria-pressed="true">無音</button>
+            <button type="button" data-sound="wind" aria-pressed="false">夜風</button>
+            <button type="button" data-sound="rain" aria-pressed="false">雨</button>
+          </div>
+          <label for="volume">音量</label><input id="volume" type="range" min="0" max="60" value="20" aria-label="環境音の音量">
+          <p>風・雨を模した合成音です。</p>
+        </section>
+      </div>
+    </div>
+  </footer>
+  <p class="sr-only" id="room-status" role="status" aria-live="polite"></p>
+</body>
+</html>
