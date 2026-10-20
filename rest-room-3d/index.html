@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>小さな休憩室 — 立体の間 | 風の灯火</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="畳に腰を下ろして、月と灯りを眺める。風の灯火の、もうひとつの小さな休憩室。">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./space.css?v=space-1">
+  <script type="module" src="./space.js?v=space-1"></script>
+</head>
+<body data-ready="false" data-motion="off">
+  <div class="scene-stage">
+    <img class="scene-fallback" src="../images/rest-room.webp" width="1280" height="719" alt="月の見える丸窓、低い木のテーブルと温かな灯りのある和室">
+    <canvas id="space" tabindex="0" aria-label="座った目線で部屋を見渡す。ドラッグ、または矢印キーで視線を動かせます。"></canvas>
+    <div class="scene-vignette" aria-hidden="true"></div>
+  </div>
+  <header class="space-header">
+    <a class="quiet-button" href="../"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="../icons.svg#back"></use></svg><span>お店へ戻る</span></a>
+    <div class="space-title"><p>風の灯火</p><h1>小さな休憩室</h1><span>立体の間</span></div>
+  </header>
+  <main>
+    <h2 class="sr-only">月と灯りのそばで、ひと休み</h2>
+    <p class="first-whisper">畳に腰を下ろして、ひと息。</p>
+    <div class="object-actions" aria-label="部屋のものに触れる">
+      <button id="tea-action" class="object-button" type="button" disabled><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14v3a6 6 0 0 1-12 0v-3m12 0h1a3 3 0 0 1 0 6M4 21h16M8 8c-3-3 3-3 0-6m6 6c-3-3 3-3 0-6"/></svg><span>お茶に触れる</span></button>
+      <button id="light-action" class="object-button" type="button" disabled><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="../icons.svg#light"></use></svg><span>灯りに触れる</span></button>
+    </div>
+    <p class="view-hint">そっとドラッグして、見渡せます。</p>
+    <p id="fallback-message" class="fallback-message" hidden>この端末では、写真の休憩室をお楽しみください。<a href="../rest-room/">写真の休憩室へ</a></p>
+    <noscript><p class="fallback-message">静かな写真の景色をお楽しみください。<a href="../rest-room/">写真の休憩室へ</a></p></noscript>
+  </main>
+  <footer class="space-footer">
+    <a href="../rest-room/" class="quiet-button photo-return"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="../icons.svg#moon"></use></svg><span>写真の間へ</span></a>
+    <div class="space-settings">
+      <button class="quiet-button" id="center-view" type="button" disabled><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5M9 12h6m-3-3v6"/></svg><span>正面へ</span></button>
+      <button class="quiet-button" id="motion-control" type="button" aria-pressed="false" disabled><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="../icons.svg#wind"></use></svg><span>動きを止める</span></button>
+      <div class="sound-settings">
+        <button id="sound-control" class="quiet-button" type="button" aria-expanded="false" aria-controls="sound-panel" disabled><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4m13-1q4 3 0 6"/></svg><span>音</span><small id="sound-state">無音</small></button>
+        <section id="sound-panel" class="sound-panel" aria-labelledby="sound-title" hidden><h2 id="sound-title">夜の音</h2><div class="sound-choices" role="group" aria-label="環境音"><button data-sound="silent" aria-pressed="true" type="button">無音</button><button data-sound="wind" aria-pressed="false" type="button">夜風</button><button data-sound="rain" aria-pressed="false" type="button">雨</button></div><label for="volume">音量</label><input id="volume" type="range" min="0" max="60" value="20"><p>風と雨を模した、静かな合成音です。</p></section>
+      </div>
+    </div>
+  </footer>
+  <p id="space-status" class="sr-only" role="status" aria-live="polite"></p>
+</body>
+</html>
